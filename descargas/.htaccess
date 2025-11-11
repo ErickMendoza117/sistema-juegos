@@ -1,0 +1,3 @@
+# Permitir acceso a archivos en la carpeta descargas
+Options +Indexes
+IndexOptions FancyIndexing
