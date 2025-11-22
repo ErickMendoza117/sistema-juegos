@@ -7,7 +7,7 @@
 // Configuración para WAMP (desarrollo local)
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_PASS', 'root');
 define('DB_NAME', 'sistema_juegos');
 
 // Para AWS EC2 con LAMP, cambiar las credenciales:

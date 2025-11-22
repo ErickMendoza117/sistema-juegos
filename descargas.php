@@ -11,7 +11,7 @@ $directorio_descargas = 'descargas/';
 // Obtener lista de archivos
 $archivos = [];
 if (is_dir($directorio_descargas)) {
-    $archivos = array_diff(scandir($directorio_descargas), array('.', '..'));
+    $archivos = array_diff(scandir($directorio_descargas), array('.', '..', '.htaccess'));
 }
 ?>
 <!DOCTYPE html>
