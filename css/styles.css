@@ -505,6 +505,26 @@ select {
     padding-right: 2.5rem !important;
 }
 
+/* Dropdown Options */
+select option {
+    background-color: #18181b;
+    /* Zinc 900 */
+    color: var(--text-main);
+    padding: 10px;
+}
+
+/* Date Input Calendar Icon */
+::-webkit-calendar-picker-indicator {
+    filter: invert(1) brightness(100%);
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
 /* Login */
 .login-page {
     background: var(--bg-body);
