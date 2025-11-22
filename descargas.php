@@ -20,7 +20,7 @@ if (is_dir($directorio_descargas)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Descargas - Sistema de Juegos</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <?php include 'includes/header.php'; ?>

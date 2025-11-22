@@ -16,7 +16,7 @@ $valor_inventario = $conn->query("SELECT SUM(precio * stock) as total FROM juego
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio - Sistema de Juegos</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=<?php echo time(); ?>">
 </head>
 <body>
     <?php include 'includes/header.php'; ?>
