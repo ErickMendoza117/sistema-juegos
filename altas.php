@@ -29,6 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt->execute()) {
             $mensaje = "Juego registrado exitosamente";
             $tipo_mensaje = "success";
+            $registro_exitoso = true;
         } else {
             $mensaje = "Error al registrar el juego: " . $conn->error;
             $tipo_mensaje = "error";
@@ -56,6 +57,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         <?php if ($mensaje): ?>
             <div class="alert alert-<?php echo $tipo_mensaje; ?>"><?php echo $mensaje; ?></div>
+            <?php if (isset($registro_exitoso) && $registro_exitoso): ?>
+                <div class="post-registro-actions" style="margin-bottom: 20px; text-align: center; padding: 20px; background-color: rgba(0,0,0,0.05); border-radius: 8px;">
+                    <h3 style="margin-top: 0; margin-bottom: 15px; font-size: 1.2em;">¿Qué desea hacer ahora?</h3>
+                    <div>
+                        <a href="index.php" class="btn btn-primary">Volver al inicio</a>
+                    </div>
+                </div>
+            <?php endif; ?>
         <?php endif; ?>
         
         <div class="form-container">

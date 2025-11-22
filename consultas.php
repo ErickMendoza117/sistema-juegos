@@ -28,6 +28,17 @@ if (isset($_GET['eliminar'])) {
 // Obtener filtros
 $busqueda = isset($_GET['busqueda']) ? limpiarDatos($_GET['busqueda']) : '';
 $genero_filtro = isset($_GET['genero']) ? limpiarDatos($_GET['genero']) : '';
+$ordenar_por = isset($_GET['ordenar_por']) ? $_GET['ordenar_por'] : 'fecha_registro';
+$orden = isset($_GET['orden']) ? $_GET['orden'] : 'DESC';
+
+// Validar columnas permitidas para ordenamiento
+$columnas_permitidas = ['titulo', 'precio', 'fecha_lanzamiento', 'stock', 'fecha_registro'];
+if (!in_array($ordenar_por, $columnas_permitidas)) {
+    $ordenar_por = 'fecha_registro';
+}
+if ($orden !== 'ASC' && $orden !== 'DESC') {
+    $orden = 'DESC';
+}
 
 // Construir consulta
 $sql = "SELECT * FROM juegos WHERE 1=1";
@@ -49,7 +60,7 @@ if (!empty($genero_filtro)) {
     $types .= "s";
 }
 
-$sql .= " ORDER BY fecha_registro DESC";
+$sql .= " ORDER BY $ordenar_por $orden";
 
 $stmt = $conn->prepare($sql);
 if (!empty($params)) {
@@ -92,6 +103,19 @@ $generos = $conn->query("SELECT DISTINCT genero FROM juegos ORDER BY genero")->f
                             <?php echo htmlspecialchars($gen['genero']); ?>
                         </option>
                     <?php endforeach; ?>
+                </select>
+
+                <select name="ordenar_por" title="Ordenar por">
+                    <option value="fecha_registro" <?php echo ($ordenar_por === 'fecha_registro') ? 'selected' : ''; ?>>Más Recientes</option>
+                    <option value="titulo" <?php echo ($ordenar_por === 'titulo') ? 'selected' : ''; ?>>Título</option>
+                    <option value="precio" <?php echo ($ordenar_por === 'precio') ? 'selected' : ''; ?>>Precio</option>
+                    <option value="fecha_lanzamiento" <?php echo ($ordenar_por === 'fecha_lanzamiento') ? 'selected' : ''; ?>>Fecha Lanzamiento</option>
+                    <option value="stock" <?php echo ($ordenar_por === 'stock') ? 'selected' : ''; ?>>Stock</option>
+                </select>
+
+                <select name="orden" title="Dirección del orden">
+                    <option value="ASC" <?php echo ($orden === 'ASC') ? 'selected' : ''; ?>>Ascendente (A-Z / 0-9)</option>
+                    <option value="DESC" <?php echo ($orden === 'DESC') ? 'selected' : ''; ?>>Descendente (Z-A / 9-0)</option>
                 </select>
                 
                 <button type="submit" class="btn btn-primary">Buscar</button>

@@ -1,7 +1,7 @@
 <header class="main-header">
     <div class="header-container">
         <div class="logo">
-            <a href="index.php">🎮 Sistema de Juegos</a>
+            <a href="index.php">Sistema de Juegos</a>
         </div>
         <nav class="main-nav">
             <a href="index.php">Inicio</a>
