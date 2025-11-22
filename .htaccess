@@ -1,0 +1,8 @@
+# Bloquear acceso a archivos que empiecen con punto (.git, .env, etc)
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Desactivar el listado de directorios (por si no funcionó en el httpd.conf)
+Options -Indexes
