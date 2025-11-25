@@ -76,12 +76,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <form method="POST" action="">
                 <div class="form-group">
                     <label for="usuario">Usuario:</label>
-                    <input type="text" id="usuario" name="usuario" required autofocus>
+                    <input type="text" id="usuario" name="usuario" maxlength="50" required autofocus>
                 </div>
                 
                 <div class="form-group">
                     <label for="contrasena">Contraseña:</label>
-                    <input type="password" id="contrasena" name="contrasena" required>
+                    <input type="password" id="contrasena" name="contrasena" maxlength="255" required>
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Ingresar</button>

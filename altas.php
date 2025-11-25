@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="form-row">
                     <div class="form-group">
                         <label for="titulo">Título: *</label>
-                        <input type="text" id="titulo" name="titulo" required>
+                        <input type="text" id="titulo" name="titulo" maxlength="150" required>
                     </div>
                     
                     <div class="form-group">
@@ -96,12 +96,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="form-row">
                     <div class="form-group">
                         <label for="plataforma">Plataforma: *</label>
-                        <input type="text" id="plataforma" name="plataforma" placeholder="Ej: PC, PlayStation 5, Xbox" required>
+                        <input type="text" id="plataforma" name="plataforma" placeholder="Ej: PC, PlayStation 5, Xbox" maxlength="100" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="desarrollador">Desarrollador:</label>
-                        <input type="text" id="desarrollador" name="desarrollador">
+                        <input type="text" id="desarrollador" name="desarrollador" maxlength="100">
                     </div>
                 </div>
                 
@@ -132,13 +132,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     
                     <div class="form-group">
                         <label for="stock">Stock:</label>
-                        <input type="number" id="stock" name="stock" min="0" value="0">
+                        <input type="number" id="stock" name="stock" min="0" max="99999" value="0">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="descripcion">Descripción:</label>
-                    <textarea id="descripcion" name="descripcion" rows="4"></textarea>
+                    <textarea id="descripcion" name="descripcion" rows="4" maxlength="5000"></textarea>
                 </div>
                 
                 <div class="form-actions">

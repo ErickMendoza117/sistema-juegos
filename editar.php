@@ -80,7 +80,7 @@ $stmt->close();
                 <div class="form-row">
                     <div class="form-group">
                         <label for="titulo">Título: *</label>
-                        <input type="text" id="titulo" name="titulo" value="<?php echo htmlspecialchars($juego['titulo']); ?>" required>
+                        <input type="text" id="titulo" name="titulo" value="<?php echo htmlspecialchars($juego['titulo']); ?>" maxlength="150" required>
                     </div>
                     
                     <div class="form-group">
@@ -101,12 +101,12 @@ $stmt->close();
                 <div class="form-row">
                     <div class="form-group">
                         <label for="plataforma">Plataforma: *</label>
-                        <input type="text" id="plataforma" name="plataforma" value="<?php echo htmlspecialchars($juego['plataforma']); ?>" required>
+                        <input type="text" id="plataforma" name="plataforma" value="<?php echo htmlspecialchars($juego['plataforma']); ?>" maxlength="100" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="desarrollador">Desarrollador:</label>
-                        <input type="text" id="desarrollador" name="desarrollador" value="<?php echo htmlspecialchars($juego['desarrollador']); ?>">
+                        <input type="text" id="desarrollador" name="desarrollador" value="<?php echo htmlspecialchars($juego['desarrollador']); ?>" maxlength="100">
                     </div>
                 </div>
                 
@@ -139,13 +139,13 @@ $stmt->close();
                     
                     <div class="form-group">
                         <label for="stock">Stock:</label>
-                        <input type="number" id="stock" name="stock" min="0" value="<?php echo $juego['stock']; ?>">
+                        <input type="number" id="stock" name="stock" min="0" max="99999" value="<?php echo $juego['stock']; ?>">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label for="descripcion">Descripción:</label>
-                    <textarea id="descripcion" name="descripcion" rows="4"><?php echo htmlspecialchars($juego['descripcion']); ?></textarea>
+                    <textarea id="descripcion" name="descripcion" rows="4" maxlength="5000"><?php echo htmlspecialchars($juego['descripcion']); ?></textarea>
                 </div>
                 
                 <div class="form-actions">
