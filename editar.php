@@ -113,8 +113,8 @@ $stmt->close();
                     </div>
                     
                     <div class="form-group">
-                        <label for="desarrollador">Desarrollador:</label>
-                        <input type="text" id="desarrollador" name="desarrollador" value="<?php echo htmlspecialchars($juego['desarrollador']); ?>" maxlength="50">
+                        <label for="desarrollador">Desarrollador: *</label>
+                        <input type="text" id="desarrollador" name="desarrollador" value="<?php echo htmlspecialchars($juego['desarrollador']); ?>" maxlength="50" required>
                     </div>
                 </div>
                 
@@ -132,8 +132,8 @@ $stmt->close();
                 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="clasificacion">Clasificación:</label>
-                        <select id="clasificacion" name="clasificacion">
+                        <label for="clasificacion">Clasificación: *</label>
+                        <select id="clasificacion" name="clasificacion" required>
                             <option value="">Seleccione...</option>
                             <?php
                             $clasificaciones = ['E' => 'E - Everyone', 'E10+' => 'E10+ - Everyone 10+', 'T' => 'T - Teen', 'M' => 'M - Mature', 'AO' => 'AO - Adults Only'];
@@ -152,8 +152,8 @@ $stmt->close();
                 </div>
                 
                 <div class="form-group">
-                    <label for="descripcion">Descripción:</label>
-                    <textarea id="descripcion" name="descripcion" rows="4" maxlength="5000"><?php echo htmlspecialchars($juego['descripcion']); ?></textarea>
+                    <label for="descripcion">Descripción: *</label>
+                    <textarea id="descripcion" name="descripcion" rows="4" maxlength="5000" required><?php echo htmlspecialchars($juego['descripcion']); ?></textarea>
                 </div>
                 
                 <div class="form-actions">

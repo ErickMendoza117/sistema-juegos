@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descripcion = limpiarDatos($_POST['descripcion']);
     $stock = intval($_POST['stock']);
     
-    if (!empty($titulo) && !empty($genero) && !empty($plataforma) && !empty($fecha_lanzamiento)) {
+    if (!empty($titulo) && !empty($genero) && !empty($plataforma) && !empty($fecha_lanzamiento) && !empty($desarrollador) && !empty($clasificacion) && !empty($descripcion)) {
         $sql = "INSERT INTO juegos (titulo, genero, plataforma, desarrollador, fecha_lanzamiento, precio, clasificacion, descripcion, stock) 
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
@@ -108,8 +108,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     
                     <div class="form-group">
-                        <label for="desarrollador">Desarrollador:</label>
-                        <input type="text" id="desarrollador" name="desarrollador" maxlength="50">
+                        <label for="desarrollador">Desarrollador: *</label>
+                        <input type="text" id="desarrollador" name="desarrollador" maxlength="50" required>
                     </div>
                 </div>
                 
@@ -127,8 +127,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="clasificacion">Clasificación:</label>
-                        <select id="clasificacion" name="clasificacion">
+                        <label for="clasificacion">Clasificación: *</label>
+                        <select id="clasificacion" name="clasificacion" required>
                             <option value="">Seleccione...</option>
                             <option value="E">E - Everyone</option>
                             <option value="E10+">E10+ - Everyone 10+</option>
@@ -145,8 +145,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
                 
                 <div class="form-group">
-                    <label for="descripcion">Descripción:</label>
-                    <textarea id="descripcion" name="descripcion" rows="4" maxlength="5000"></textarea>
+                    <label for="descripcion">Descripción: *</label>
+                    <textarea id="descripcion" name="descripcion" rows="4" maxlength="5000" required></textarea>
                 </div>
                 
                 <div class="form-actions">
