@@ -161,8 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const platforms = [
-                'PC', 'PlayStation 5', 'PlayStation 4', 'Xbox Series X/S', 
-                'Xbox One', 'Nintendo Switch', 'Android', 'iOS', 'Mac', 'Linux'
+                'PC', 'PlayStation 5', 'Xbox', 'Nintendo Switch'
             ];
             
             const box = document.getElementById('plataforma-box');
