@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="form-row">
                     <div class="form-group">
                         <label for="titulo">Título: *</label>
-                        <input type="text" id="titulo" name="titulo" maxlength="150" required>
+                        <input type="text" id="titulo" name="titulo" maxlength="50" required>
                     </div>
                     
                     <div class="form-group">
@@ -96,12 +96,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="form-row">
                     <div class="form-group">
                         <label for="plataforma">Plataforma: *</label>
-                        <input type="text" id="plataforma" name="plataforma" placeholder="Ej: PC, PlayStation 5, Xbox" maxlength="100" required>
+                        <div class="multi-select-container" id="plataforma-container">
+                            <div class="multi-select-box" id="plataforma-box">
+                                <span class="multi-select-placeholder">Seleccione plataformas...</span>
+                            </div>
+                            <div class="multi-select-dropdown" id="plataforma-dropdown">
+                                <!-- Options injected by JS -->
+                            </div>
+                            <input type="hidden" id="plataforma" name="plataforma" required>
+                        </div>
                     </div>
                     
                     <div class="form-group">
                         <label for="desarrollador">Desarrollador:</label>
-                        <input type="text" id="desarrollador" name="desarrollador" maxlength="100">
+                        <input type="text" id="desarrollador" name="desarrollador" maxlength="50">
                     </div>
                 </div>
                 
@@ -150,5 +158,98 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     
     <?php include 'includes/footer.php'; ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const platforms = [
+                'PC', 'PlayStation 5', 'PlayStation 4', 'Xbox Series X/S', 
+                'Xbox One', 'Nintendo Switch', 'Android', 'iOS', 'Mac', 'Linux'
+            ];
+            
+            const box = document.getElementById('plataforma-box');
+            const dropdown = document.getElementById('plataforma-dropdown');
+            const hiddenInput = document.getElementById('plataforma');
+            
+            let selectedPlatforms = [];
+            
+            // Initialize dropdown options
+            platforms.forEach(platform => {
+                const option = document.createElement('div');
+                option.className = 'multi-select-option';
+                option.innerHTML = `
+                    <div class="checkbox"></div>
+                    <span>${platform}</span>
+                `;
+                option.onclick = (e) => {
+                    e.stopPropagation();
+                    togglePlatform(platform);
+                };
+                dropdown.appendChild(option);
+            });
+            
+            // Toggle dropdown
+            box.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdown.classList.toggle('show');
+                box.classList.toggle('active');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', () => {
+                dropdown.classList.remove('show');
+                box.classList.remove('active');
+            });
+            
+            function togglePlatform(platform) {
+                const index = selectedPlatforms.indexOf(platform);
+                if (index === -1) {
+                    selectedPlatforms.push(platform);
+                } else {
+                    selectedPlatforms.splice(index, 1);
+                }
+                updateUI();
+            }
+            
+            function updateUI() {
+                // Update hidden input
+                hiddenInput.value = selectedPlatforms.join(', ');
+                
+                // Update box content
+                box.innerHTML = '';
+                if (selectedPlatforms.length === 0) {
+                    box.innerHTML = '<span class="multi-select-placeholder">Seleccione plataformas...</span>';
+                } else {
+                    selectedPlatforms.forEach(platform => {
+                        const tag = document.createElement('div');
+                        tag.className = 'multi-select-tag';
+                        tag.innerHTML = `
+                            ${platform}
+                            <span class="remove-tag" onclick="event.stopPropagation(); removePlatform('${platform}')">×</span>
+                        `;
+                        box.appendChild(tag);
+                    });
+                }
+                
+                // Update dropdown selection state
+                const options = dropdown.querySelectorAll('.multi-select-option');
+                options.forEach(option => {
+                    const text = option.querySelector('span').textContent;
+                    if (selectedPlatforms.includes(text)) {
+                        option.classList.add('selected');
+                    } else {
+                        option.classList.remove('selected');
+                    }
+                });
+            }
+            
+            // Expose remove function globally
+            window.removePlatform = function(platform) {
+                const index = selectedPlatforms.indexOf(platform);
+                if (index !== -1) {
+                    selectedPlatforms.splice(index, 1);
+                    updateUI();
+                }
+            };
+        });
+    </script>
 </body>
 </html>

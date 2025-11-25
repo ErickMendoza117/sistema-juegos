@@ -93,7 +93,7 @@ $generos = $conn->query("SELECT DISTINCT genero FROM juegos ORDER BY genero")->f
         <div class="search-container">
             <form method="GET" action="" class="search-form">
                 <input type="text" name="busqueda" placeholder="Buscar por título, desarrollador o plataforma..." 
-                       value="<?php echo htmlspecialchars($busqueda); ?>">
+                       value="<?php echo htmlspecialchars($busqueda); ?>" maxlength="50">
                 
                 <select name="genero">
                     <option value="">Todos los géneros</option>
