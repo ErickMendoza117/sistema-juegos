@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $descripcion = limpiarDatos($_POST['descripcion']);
     $stock = intval($_POST['stock']);
     
-    if (!empty($titulo) && !empty($genero) && !empty($plataforma)) {
+    if (!empty($titulo) && !empty($genero) && !empty($plataforma) && !empty($fecha_lanzamiento)) {
         $sql = "INSERT INTO juegos (titulo, genero, plataforma, desarrollador, fecha_lanzamiento, precio, clasificacion, descripcion, stock) 
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
@@ -115,8 +115,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="fecha_lanzamiento">Fecha de Lanzamiento:</label>
-                        <input type="date" id="fecha_lanzamiento" name="fecha_lanzamiento">
+                        <label for="fecha_lanzamiento">Fecha de Lanzamiento: *</label>
+                        <input type="date" id="fecha_lanzamiento" name="fecha_lanzamiento" required>
                     </div>
                     
                     <div class="form-group">

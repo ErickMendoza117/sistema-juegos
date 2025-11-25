@@ -120,8 +120,8 @@ $stmt->close();
                 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="fecha_lanzamiento">Fecha de Lanzamiento:</label>
-                        <input type="date" id="fecha_lanzamiento" name="fecha_lanzamiento" value="<?php echo $juego['fecha_lanzamiento']; ?>">
+                        <label for="fecha_lanzamiento">Fecha de Lanzamiento: *</label>
+                        <input type="date" id="fecha_lanzamiento" name="fecha_lanzamiento" value="<?php echo $juego['fecha_lanzamiento']; ?>" required>
                     </div>
                     
                     <div class="form-group">
