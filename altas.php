@@ -113,7 +113,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     
                     <div class="form-group">
                         <label for="precio">Precio ($):</label>
-                        <input type="number" id="precio" name="precio" step="0.01" min="0" value="0">
+                        <input type="number" id="precio" name="precio" step="0.01" min="0" max="999999.99" value="0">
                     </div>
                 </div>
                 

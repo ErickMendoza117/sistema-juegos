@@ -118,7 +118,7 @@ $stmt->close();
                     
                     <div class="form-group">
                         <label for="precio">Precio ($):</label>
-                        <input type="number" id="precio" name="precio" step="0.01" min="0" value="<?php echo $juego['precio']; ?>">
+                        <input type="number" id="precio" name="precio" step="0.01" min="0" max="999999.99" value="<?php echo $juego['precio']; ?>">
                     </div>
                 </div>
                 
