@@ -46,8 +46,8 @@ $valor_inventario = $conn->query("SELECT SUM(precio * stock) as total FROM juego
             
             <div class="stat-card">
                 <div class="stat-icon">💰</div>
-                <div class="stat-info">
-                    <h3>$<?php echo number_format($valor_inventario, 2); ?></h3>
+                <div class="stat-info" style="min-width: 0; flex: 1; overflow: hidden;">
+                    <h3 id="inventory-value" style="white-space: nowrap;">$<?php echo number_format($valor_inventario, 2); ?></h3>
                     <p>Valor del Inventario</p>
                 </div>
             </div>
@@ -75,5 +75,30 @@ $valor_inventario = $conn->query("SELECT SUM(precio * stock) as total FROM juego
     </div>
     
     <?php include 'includes/footer.php'; ?>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const inventoryValue = document.getElementById('inventory-value');
+            if (inventoryValue) {
+                const container = inventoryValue.parentElement;
+                
+                const adjustFontSize = () => {
+                    // Reset to original size to check if it fits
+                    let fontSize = 2.5; 
+                    inventoryValue.style.fontSize = fontSize + 'rem';
+                    
+                    // Reduce font size until it fits
+                    while (inventoryValue.scrollWidth > container.clientWidth && fontSize > 1.0) {
+                        fontSize -= 0.1;
+                        inventoryValue.style.fontSize = fontSize + 'rem';
+                    }
+                };
+                
+                // Run on load and resize
+                adjustFontSize();
+                window.addEventListener('resize', adjustFontSize);
+            }
+        });
+    </script>
 </body>
 </html>

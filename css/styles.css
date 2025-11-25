@@ -586,6 +586,12 @@ select option {
     border-radius: 0.25rem;
 }
 
+.login-box form button {
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
 /* Alerts */
 .alert {
     padding: 1rem 1.5rem;
