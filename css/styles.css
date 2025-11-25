@@ -412,7 +412,7 @@ a {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
-    overflow: hidden;
+    overflow-x: auto;
     box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
 }
 
